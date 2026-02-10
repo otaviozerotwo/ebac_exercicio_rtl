@@ -16,12 +16,15 @@ describe('Teste para o componente PostComment', () => {
         });
         fireEvent.click(screen.getByTestId('btn-post-submit'));
         
+        expect(screen.getByText('a foto não carregou')).toBeInTheDocument();
+        
         fireEvent.change(screen.getByTestId('post-input'), {
             target: {
                 value: 'manda de novo'
             }
         });
         fireEvent.click(screen.getByTestId('btn-post-submit'));
-        expect(screen.getByText('a foto não carregou')).toBeInTheDocument();
+        
+        expect(screen.getByText('manda de novo')).toBeInTheDocument();
     });
 });
